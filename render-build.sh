@@ -14,7 +14,7 @@ pip install -r requirements.txt
 echo "🟢 [2/5] Frontend deps..."
 npm install -g pnpm@9
 cd frontend
-pnpm install --frozen-lockfile
+pnpm install --no-frozen-lockfile
 
 # 3. Build React → bundle.js
 echo "⚡ [3/5] Building React..."
