@@ -1,0 +1,8 @@
+{
+  "name": "Pawfect Companions — Find Your Perfect Furry Friend",
+  "short_name": "Pawfect",
+  "description": "Browse healthy, ethically-raised puppies across US, UK, and Canada.",
+  "theme_color": "#ea580c",
+  "background_color": "#fff7ed",
+  "icons": [{ "src": "logo-512.png", "sizes": "512x512", "type": "image/png" }]
+}

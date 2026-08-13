@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ea580c" />
+  
+  <!-- SEO -->
+  <title>{{ SITE_NAME }} — {{ SITE_TAGLINE }}</title>
+  <meta name="description" content="{{ SITE_NAME }}: Find your perfect furry friend. Healthy, ethically-raised puppies with health guarantees. 🐾 US · UK · Canada shipping." />
+  <meta name="keywords" content="puppies for sale, buy puppy online, golden retriever puppies, french bulldog puppies, husky puppies, ethical dog breeders, Pawfect Companions" />
+  <meta name="author" content="{{ SITE_NAME }}" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="{{ SITE_NAME }}" />
+  <meta property="og:title" content="{{ SITE_NAME }} — {{ SITE_TAGLINE }}" />
+  <meta property="og:description" content="Find your perfect furry friend. Vet-checked puppies with 10-year health guarantees." />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="en_GB" />
+  <meta property="og:locale:alternate" content="en_CA" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ SITE_NAME }} — {{ SITE_TAGLINE }}" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{% static 'logo-32.png' %}" />
+  <link rel="apple-touch-icon" href="{% static 'logo-512.png' %}" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- PWA -->
+  <link rel="manifest" href="{% static 'manifest.json' %}" />
+</head>
+<body>
+  <div id="root"></div>
+  
+  <!-- Inline brand config (avoids extra network call) -->
+  <script>
+    window.__PAWFECT__ = {
+      SITE_NAME: "{{ SITE_NAME|escapejs }}",
+      TAGLINE: "{{ SITE_TAGLINE|escapejs }}",
+      SITE_URL: "{{ SITE_URL }}",
+      ENV: "{{ ENV }}",
+      MARKETS: ["US", "UK", "CA"],
+      BUILD_ID: "{{ BUILD_ID|default:'' }}"
+    };
+  </script>
+  
+  <!-- React bundle (emitted by Webpack) -->
+  <script src="{% static 'bundle.js' %}"></script>
+</body>
+</html>
