@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "pawfect-companions"
+version = "2.0.0"
+description = "Pawfect Companions — Multi-market puppy marketplace (Django 5 + React 18)"
+authors = ["Pawfect Companions <hello@pawfectcompanions.com>"]
+readme = "README.md"
+packages = [{ include = "." }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0"
+djangorestframework = "^3.14"
+django-filter = "^24"
+django-cors-headers = "^4"
+django-environ = "^0.11"
+cloudinary = "^1"
+django-cloudinary-storage = "^0.3"
+pillow = "^10"
+psycopg2-binary = "^2"
+gunicorn = "^21"
+whitenoise = "^6"
+sentry-sdk = "^1"
+django-better-admin-arrayfield = "^1"
+django-extensions = { version = "^3", optional = true }
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7"
+pytest-django = "^4"
+ruff = "^0.2"

@@ -1,0 +1,28 @@
+services:
+  pawfect-db:
+    image: postgres:15-alpine
+    container_name: pawfect-db
+    environment:
+      POSTGRES_DB: pawfect
+      POSTGRES_USER: pawfect
+      POSTGRES_PASSWORD: pawfect2026
+    ports: ["5432:5432"]
+    volumes: [pawfect-pg:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pawfect"]
+      interval: 5s; timeout: 5s; retries: 5
+
+  pawfect-web:
+    build: .
+    container_name: pawfect-web
+    env_file: .env
+    ports: ["8000:8000"]
+    depends_on:
+      pawfect-db: { condition: service_healthy }
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py seed_demo_data 2>/dev/null;
+             gunicorn core.wsgi -b 0.0.0.0:8000 -w 2"
+
+volumes:
+  pawfect-pg:
