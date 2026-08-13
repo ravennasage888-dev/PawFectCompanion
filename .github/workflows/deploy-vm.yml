@@ -1,0 +1,30 @@
+# Find/replace all occurrences in ALL workflow files:
+# django-react-typescript  →  pawfect-companions
+# ${{ env.IMAGE_NAME }}     →  pawfect-companions
+# drt.ini                   →  pawfect.ini
+name: Deploy Pawfect to VM
+on:
+  push: { branches: [vm-deploy] }
+env:
+  IMAGE_NAME: ghcr.io/${{ github.repository }}/pawfect-companions
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build & Push Docker
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u $ --password-stdin
+          docker build -t $IMAGE_NAME:$GITHUB_SHA -t $IMAGE_NAME:latest .
+          docker push $IMAGE_NAME --all-tags
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/pawfect
+            docker compose pull
+            docker compose up -d --remove-orphans
+            echo "🐾 Pawfect deployed!"
