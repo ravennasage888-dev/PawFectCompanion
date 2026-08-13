@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body{font-family:Arial,sans-serif;background:#fff7ed;padding:20px}
+    .wrap{max-width:600px;margin:0 auto;background:#fff;border-radius:16px;padding:30px;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+    .hero{background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;padding:20px;border-radius:12px;text-align:center;margin-bottom:20px}
+    .field{padding:10px 0;border-bottom:1px solid #fed7aa}
+    .label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#9a3412;font-weight:700}
+    .cta{display:inline-block;background:linear-gradient(135deg,#f97316,#ea580c);color:#fff!important;padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;margin:15px 0}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div style="font-size:40px">🐾</div>
+      <h1 style="margin:5px 0 0">New Puppy Inquiry!</h1>
+    </div>
+    <h2>{{ customer }} is interested in {% if puppy %}<strong>{{ puppy.name }} ({{ puppy.breed }})</strong>{% else %}<strong>a puppy</strong>{% endif %}</h2>
+    <div class="field"><div class="label">Customer</div><strong>{{ customer }}</strong></div>
+    <div class="field"><div class="label">Email</div>{{ email }}</div>
+    <div class="field"><div class="label">Phone</div>{{ phone|default:"Not provided" }}</div>
+    <div class="field"><div class="label">Market</div>{{ market }}</div>
+    <div class="field"><div class="label">Message</div><p style="white-space:pre-wrap">{{ message }}</p></div>
+    <center><a class="cta" href="{{ admin_url }}">🔐 View in Admin Portal</a></center>
+    <p style="text-align:center;color:#9a3412;font-size:12px;margin-top:20px">Pawfect Companions · Find Your Perfect Furry Friend</p>
+  </div>
+</body>
+</html>
