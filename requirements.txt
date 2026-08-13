@@ -1,36 +1,14 @@
-# ============================================================
-# 🐾 PAWFECT COMPANIONS — requirements.txt
-# For Render.com free Python deployment
-# ============================================================
-
-# --- Core Django ---
 Django>=5.0,<6.0
 django-environ>=0.11,<1.0
-
-# --- API & REST ---
 djangorestframework>=3.14,<4.0
 django-filter>=24,<25
 django-cors-headers>=4,<5
-
-# --- Database ---
 psycopg2-binary>=2,<3
-
-# --- Media & Images ---
 cloudinary>=1,<2
 django-cloudinary-storage>=0.3,<0.4
 Pillow>=10,<11
-
-# --- Production Server ---
 gunicorn>=21,<22
-
-# --- Static Files ---
 whitenoise>=6,<7
-
-# --- Admin & Utils ---
 django-better-admin-arrayfield>=1,<2
-
-# --- Error Monitoring ---
 sentry-sdk>=1,<2
-
-# --- WSGI compatibility ---
 packaging>=23,<25
